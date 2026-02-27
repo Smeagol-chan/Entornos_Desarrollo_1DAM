@@ -17,9 +17,10 @@ public class GestorCatalogo
     {
         System.out.println("\n=== Modificar Videojuego ===\n");
         System.out.println("¿Qué juego quieres modificar?\n");
-
-        mostrarListaCompletaJuegos();
-
+        System.out.println("\t- PC");
+        System.out.println("\t- PS");
+        System.out.println("\t- XBOX");
+        System.out.println("\t- SWITCH");
         System.out.println("\n=======================\n");
         System.out.print("> ");
     }
@@ -260,7 +261,7 @@ public class GestorCatalogo
                     try
                     {
                         mostrarSelectorPlataforma();
-                        mostarJuegosPorPlataforma(Plataformas.valueOf(FuncionesComunes.solicitarString()));
+                        mostarJuegosPorPlataforma(Plataformas.valueOf(FuncionesComunes.solicitarString().toUpperCase()));
                     }
                     catch(IllegalArgumentException e)
                     {

@@ -72,7 +72,7 @@ public class Videojuego
                 ", Plataforma: " + plataforma +
                 ", Genero: " + genero +
                 ", Año de lanzamiento: " + annoLanzamiento +
-                ", Precio: " + precio +
+                ", Precio: " + precio + " €" +
                 ", Stock: " + stock;
     }
 }
