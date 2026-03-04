@@ -1,6 +1,5 @@
 package org.example.mutxastore_manager.objetos;
 import lombok.Getter;
-import lombok.Setter;
 import org.example.mutxastore_manager.enums.Plataformas;
 import org.example.mutxastore_manager.excepciones.IllegalAnnoLanzamientoException;
 import org.example.mutxastore_manager.excepciones.JuegoDuplicadoException;

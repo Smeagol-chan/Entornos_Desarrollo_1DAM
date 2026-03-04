@@ -15,8 +15,7 @@ public class GestorCatalogo
 
     private static void mostrarSelectorPlataforma()
     {
-        System.out.println("\n=== Modificar Videojuego ===\n");
-        System.out.println("¿Qué juego quieres modificar?\n");
+        System.out.println("\n=== Plataformas de Videojuegos ===\n");
         System.out.println("\t- PC");
         System.out.println("\t- PS");
         System.out.println("\t- XBOX");
@@ -37,8 +36,9 @@ public class GestorCatalogo
     private static void mostrarListaCompletaJuegos()
     {
         int contador = 1;
+        System.out.println("Selecciona un número del "+ contador +" al "+ listaVideojuegos.size() +":");
         for(Videojuego videojuego : listaVideojuegos)
-            System.out.println("\t"+ contador++ +"--> ["+ videojuego +"]");
+            System.out.println("\t"+ contador++ +") --> ["+ videojuego +"]");
     }
 
     private static void mostrarJuegosParaEliminar()
@@ -84,7 +84,12 @@ public class GestorCatalogo
 
     private static void modificarJuego(int posicionJuego, String atributo)
     {
-        Videojuego juegoModificado = listaVideojuegos.get(posicionJuego);
+        Videojuego juegoModificado = new Videojuego(listaVideojuegos.get(posicionJuego).getTitulo()
+                    , listaVideojuegos.get(posicionJuego).getPlataforma()
+                    , listaVideojuegos.get(posicionJuego).getGenero()
+                    , listaVideojuegos.get(posicionJuego).getAnnoLanzamiento()
+                    , listaVideojuegos.get(posicionJuego).getPrecio()
+                    , listaVideojuegos.get(posicionJuego).getStock());
 
         switch(atributo)
         {
@@ -98,7 +103,7 @@ public class GestorCatalogo
 
             case "plataforma":
                 System.out.print("Nueva plataforma: ");
-                Plataformas plataforma = Plataformas.valueOf(FuncionesComunes.solicitarString());
+                Plataformas plataforma = Plataformas.valueOf(FuncionesComunes.solicitarString().toUpperCase());
                 juegoModificado.setPlataforma(plataforma);
                 juegoModificado.coincidenciaEnCatalogo(listaVideojuegos);
                 listaVideojuegos.get(posicionJuego).setPlataforma(plataforma);
@@ -148,7 +153,7 @@ public class GestorCatalogo
         String titulo = FuncionesComunes.solicitarString();
 
         System.out.print("Plataforma: ");
-        Plataformas plataforma = Plataformas.valueOf(FuncionesComunes.solicitarString());
+        Plataformas plataforma = Plataformas.valueOf(FuncionesComunes.solicitarString().toUpperCase());
 
         System.out.print("Género: ");
         String genero = FuncionesComunes.solicitarString();
@@ -191,7 +196,7 @@ public class GestorCatalogo
             mostrarMenuPrincipal();
             switch(FuncionesComunes.solicitudChar())
             {
-                case '1':
+                case '1':   //Añadir
                     try
                     {
                         listaVideojuegos.add(annadirVideojuego());
@@ -210,7 +215,7 @@ public class GestorCatalogo
                     }
                     break;
 
-                case '2':
+                case '2':   //Modificar
                     try
                     {
                         if(listaVideojuegos.isEmpty()) System.out.println("La lista está vacía.");
@@ -218,6 +223,7 @@ public class GestorCatalogo
                         {
                             mostrarJuegosParaModficar();
                             int posicionJuego = (int) FuncionesComunes.solicitudNumero();
+                            FuncionesComunes.key.nextLine();
                             mostrarAtributosJuego();
                             String atributo = FuncionesComunes.solicitarString().toLowerCase();
                             modificarJuego(posicionJuego-1, atributo);
@@ -241,7 +247,7 @@ public class GestorCatalogo
                     }
                     break;
 
-                case '3':
+                case '3':   //Eliminar
                     try
                     {
                         if(listaVideojuegos.isEmpty()) System.out.println("La lista está vacía.");
@@ -249,6 +255,7 @@ public class GestorCatalogo
                         {
                             mostrarJuegosParaEliminar();
                             eliminarJuego((int) FuncionesComunes.solicitudPositivosNumero() - 1);
+                            FuncionesComunes.key.nextLine();
                         }
                     }
                     catch(IndexOutOfBoundsException e)
@@ -257,7 +264,7 @@ public class GestorCatalogo
                     }
                     break;
 
-                case '4':
+                case '4':   //Mostrar
                     try
                     {
                         mostrarSelectorPlataforma();
@@ -269,7 +276,7 @@ public class GestorCatalogo
                     }
                     break;
 
-                case 'X':
+                case 'X':   //Salir
                 case'x':
                     System.out.println("\n=== FINALIZANDO EJECICIÓN ===");
                     break;
