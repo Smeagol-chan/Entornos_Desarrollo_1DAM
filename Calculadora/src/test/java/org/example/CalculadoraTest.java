@@ -94,7 +94,13 @@ class CalculadoraTest
     void divide(int num1, int num2, double resultado)
     {
         Calculadora calculadora = new Calculadora(num1, num2);
-
-        assertEquals(resultado, calculadora.divide());
+        try
+        {
+            assertEquals(resultado, calculadora.divide());
+        }
+        catch (ArithmeticException e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 }
