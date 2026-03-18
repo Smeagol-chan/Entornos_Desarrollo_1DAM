@@ -78,11 +78,11 @@ class CalculadoraTest
     @ParameterizedTest
     @CsvSource({
             "10, 5, 2",
-            "5, 10, 0.5",
+            "5, 10, 0",
             "5, 5, 1",
             "10, -5, -2",
             "-10, 5, -2",
-            "-5, -10, 0.5",
+            "-5, -10, 0",
             "-10, -5, 2",
             "-5, -5, 1",
             "5, 0, -12",
@@ -91,7 +91,7 @@ class CalculadoraTest
             "0, -5, 0",
             "0, 0, -12"
     })
-    void divide(int num1, int num2, double resultado)
+    void divide(int num1, int num2, int resultado)
     {
         Calculadora calculadora = new Calculadora(num1, num2);
         try
