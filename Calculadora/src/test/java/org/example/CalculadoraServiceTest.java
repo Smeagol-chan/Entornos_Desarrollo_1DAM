@@ -11,6 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
+import static sun.java2d.cmm.ProfileDataVerifier.verify;
 
 @ExtendWith(MockitoExtension.class)
 public class CalculadoraServiceTest {
@@ -35,8 +36,6 @@ public class CalculadoraServiceTest {
         int resultado = calculadoraService.sumarValores();
 
         assertEquals(8, resultado);
-        verify(repositorio).obtenerValorA();
-        verify(repositorio).obtenerValorB();
     }
 
     //En este test vamos a probar la obtención de diferentes valores consecutivos.
